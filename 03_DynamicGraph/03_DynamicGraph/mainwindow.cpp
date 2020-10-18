@@ -44,7 +44,7 @@ void MainWindow::QPlot_init(QCustomPlot *customPlot)
     customPlot->yAxis->setLabel("Y");
 
     // 设置y坐标轴显示范围
-    customPlot->yAxis->setRange(120,-120);
+    customPlot->yAxis->setRange(-120,120);
 
     // 显示图表的图例
     customPlot->legend->setVisible(true);
@@ -54,6 +54,9 @@ void MainWindow::QPlot_init(QCustomPlot *customPlot)
 
     // 设置波形曲线的复选框字体颜色
     ui->checkBox_1->setStyleSheet("QCheckBox{color:rgb(255,0,0)}");//设定前景颜色,就是字体颜色
+
+    // 允许用户用鼠标拖动轴范围，用鼠标滚轮缩放，点击选择图形:
+    customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 }
 
 // 定时器溢出处理槽函数。用来生成曲线的坐标数据。
